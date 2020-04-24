@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'regScreen.dart';
 
-class WelcomeScreen extends StatefulWidget {
-  static String id = 'welcome';
+class RegScreen extends StatefulWidget {
+  static String id = 'reg';
   @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
+  _RegScreenState createState() => _RegScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _RegScreenState extends State<RegScreen> {
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -26,9 +25,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
             ListView(
               children: <Widget>[
-                SizedBox(
-                  height: 20,
-                ),
                 Container(
                   margin: EdgeInsets.all(30),
                   child: Text(
@@ -39,9 +35,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         fontWeight: FontWeight.w900,
                         color: Colors.yellow),
                   ),
-                ),
-                SizedBox(
-                  height: 40,
                 ),
                 Card(
                   color: Colors.transparent,
@@ -85,11 +78,70 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     ),
                   ),
                   child: TextField(
+                    keyboardType: TextInputType.text,
+                    textCapitalization: TextCapitalization.words,
+                    style: TextStyle(fontSize: 20.0, color: Colors.white),
+                    cursorColor: Color(0xFF9b9b9b),
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.account_circle,
+                        color: Colors.cyanAccent,
+                      ),
+                      hintText: 'Enter UserName',
+                      hintStyle: TextStyle(color: Colors.white),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(40)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.all(Radius.circular(40)),
+                      ),
+                    ),
+                  ),
+                ),
+                Card(
+                  color: Colors.transparent,
+                  margin: EdgeInsets.only(left: 30, top: 30, right: 30),
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(40),
+                    ),
+                  ),
+                  child: TextField(
                     style: TextStyle(fontSize: 20.0, color: Colors.white),
                     cursorColor: Color(0xFF9b9b9b),
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.vpn_key, color: Colors.cyanAccent),
                       hintText: 'Enter Password',
+                      hintStyle: TextStyle(color: Colors.white),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(40)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.all(Radius.circular(40)),
+                      ),
+                    ),
+                  ),
+                ),
+                Card(
+                  color: Colors.transparent,
+                  margin: EdgeInsets.only(left: 30, top: 30, right: 30),
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(40),
+                    ),
+                  ),
+                  child: TextField(
+                    style: TextStyle(fontSize: 20.0, color: Colors.white),
+                    cursorColor: Color(0xFF9b9b9b),
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.vpn_key, color: Colors.cyanAccent),
+                      hintText: 'Verify Password',
                       hintStyle: TextStyle(color: Colors.white),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(40)),
@@ -110,9 +162,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(40))),
-                    onPressed: _isLoading ? null : _login,
+                    onPressed: _isLoading ? null : _signUp,
                     child: Text(
-                      _isLoading ? 'Logging...' : 'Login',
+                      _isLoading ? 'Logging...' : 'Sign Up',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -121,32 +173,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     disabledColor: Colors.grey,
                   ),
                 ),
-                SizedBox(
-                  height: 80,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'Don\'t have an Account? ',
-                      style: TextStyle(
-                          color: Colors.yellow,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16),
-                    ),
-                    FlatButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, RegScreen.id);
-                      },
-                      child: Text(
-                        'Sign Up',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 25),
-                      ),
-                      textColor: Colors.blueAccent,
-                    )
-                  ],
-                )
               ],
             ),
           ],
@@ -155,5 +181,5 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 
-  void _login() async {}
+  void _signUp() async {}
 }

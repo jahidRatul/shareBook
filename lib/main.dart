@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'welcomeScreen.dart';
+import 'regScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,6 +11,7 @@ class MyApp extends StatelessWidget {
       initialRoute: WelcomeScreen.id,
       routes: {
         WelcomeScreen.id: (context) => WelcomeScreen(),
+        RegScreen.id: (context) => RegScreen(),
       },
     );
   }
